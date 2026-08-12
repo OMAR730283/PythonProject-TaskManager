@@ -3,7 +3,12 @@ import flask
 app = flask.Flask(__name__)
 
 @app.route('/hello/<name>')
-def home(name):
-  return "hello" + name
+def hello(name):
+  return "hillohoi " + name
 
-app.run()
+
+@app.route('/')
+def home():
+  return "Task Manager"
+
+app.run(debug=True)
