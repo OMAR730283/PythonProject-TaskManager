@@ -7,8 +7,12 @@ def hello(name):
   return "hillohoi " + name
 
 
+
 @app.route('/')
 def home():
-  return "Task Manager"
+
+
+    completed = False
+    return flask.render_template('index.html', completed = completed)
 
 app.run(debug=True)
