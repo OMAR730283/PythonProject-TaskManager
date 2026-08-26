@@ -28,6 +28,12 @@
  {{task.title}}
  
  {{ task.description }}
+ <form action="/delete/{{task.id}}" method="post">
+ <button type="submit">delete</button>
+ </form>
+<form action="/update/{{task.id}}" method="get">
+  <button type="submit">Update Task</button>
+ </form>
  {% if task.completed %}
  <p>task is completed</p>
 {% else %}
