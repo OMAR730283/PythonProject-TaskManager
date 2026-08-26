@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<form action="/update/{{task.id}}" method="post">
+  <label for="title">Title:</label><br>
+  <input type="text" id="title" name ="title" value= {{ task.title }}>
+</br>
+  <label for="description">description:</label><br>
+  <input type="text" id="description" name="description" value={{ task.description }}>
+</br>
+{% if task.completed %}
+<input type="checkbox" id="completed" name="completed" value="True" checked>
+{% else %}
+<input type="checkbox" id="completed" name="completed" value="True">
+{% endif %}
+<label for="completed"> check the box</label><br>
+
+</br>
+ <button type="submit">Update Task</button>
+</form>
+<form action="/" method="get">
+ <button type="submit">Home</button>
+ </form>
+
+ 
+
+</body>
+
+
+</html>

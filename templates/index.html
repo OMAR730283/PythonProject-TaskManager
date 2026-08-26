@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>omar how are yu</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<form action="/" method="post">
+  <label for="title">Title:</label><br>
+  <input type="text" id="title" name="title">
+</br>
+  <label for="description">description:</label><br>
+  <input type="text" id="description" name="description">
+</br>
+<input type="checkbox" id="completed" name="completed" value="True">
+<label for="completed"> check the box</label><br>
+
+</br>
+ <button type="submit">Add Task</button>
+</form>
+</body>
+
+
+<body>
+{% for task in tasks %}
+ {{task.title}}
+ 
+ {{ task.description }}
+ <form action="/delete/{{task.id}}" method="post">
+ <button type="submit">delete</button>
+ </form>
+<form action="/update/{{task.id}}" method="get">
+  <button type="submit">Update Task</button>
+ </form>
+ {% if task.completed %}
+ <p>task is completed</p>
+{% else %}
+<p>not complete</p>
+{% endif %}
+{% endfor%}
+
+</body>
+</html>
