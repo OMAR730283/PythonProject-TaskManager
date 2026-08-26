@@ -22,18 +22,44 @@ class Task(db.Model):
 
 with app.app_context():
    db.create_all()
+   # task = Task(
+   #    title = "omar",
+   #    description = "nothing",
+   #    completed = True
+   # )
+   # db.session.add(task)
+   # db.session.commit()
 
+   # tasks = Task.query.all()
+   # for task in tasks:
+   #  print(task.description)
+
+  
 @app.route('/hello/<name>')
 def hello(name):
   return "hillohoi " + name
 
 
 
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def home():
+    if flask.request.method == "POST":
+       print(flask.request.form)
+       title = flask.request.form["title"]
+       description = flask.request.form["description"]
+       completed = flask.request.form.get("completed") == "True"
 
 
-    completed = False
-    return flask.render_template('index.html', completed = completed)
+       task = Task(
+           title=title,
+           description=description,
+           completed=completed
+       )
+       db.session.add(task)
+       db.session.commit()
+      
+       
+    return flask.render_template('index.html',  tasks = Task.query.all() )
 
 app.run(debug=True)
+
